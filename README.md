@@ -1,3 +1,5 @@
+<img style="border-radius:50%"src="Pictures/jake.jpg"/>
+
 Dotfiles for my main productivity setup, Jake
 
 ![Main Look](assets/terminal.png)
