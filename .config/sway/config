@@ -76,9 +76,9 @@
     
 
     exec swayidle -w \
-          timeout 600 'swaylock -f -e -i ~/Pictures/lockScreen.png -s fill' \
+          timeout 600 '~/.config/sway/blurBg.sh' \
           timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -e -i ~/Pictures/lockScreen.png -s fill'
+          before-sleep '~/.config/sway/blurBg.sh > ~/log'
 
     #lock screen with a bg image
     bindsym $mod+Shift+x exec wlogout -p layer-shell
@@ -212,7 +212,7 @@
 
     assign [app_id="com.obsproject.Studio"] 6 
     assign [class="obsidian"] 3
-    assign [class="vesktop"] 4
+    assign [app_id="vesktop"] 4
 
     #  smarter splitting cause im lazy :3
     for_window [app_id="kitty"] split toggle ; opacity .97 
