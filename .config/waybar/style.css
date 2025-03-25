@@ -28,20 +28,6 @@ window#waybar.hidden {
 	padding-bottom: 1.5px;
 }
 
-/*
-#workspaces button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-  color: #1e1e2e;
-}
-*/
-
-/*
-#workspaces button.active {
-  color: #1e1e2e;
-  background-color: #89b4fa;
-}
-*/
 #workspaces button.focused{
   color: @color14; /*#1e1e2e;*/
   background-color: @background; 
@@ -68,33 +54,12 @@ window#waybar.hidden {
   margin: 4px 4px;
   color: @color15;
   background-color: @infoBG;
-  /* background-color: #181825; */
 }
 
 #custom-sep {
   padding: 0px;
   color: #585b70;
 }
-/*
-#custom-spotify.playing {
-  color: #a6e3a1;
-}
-
-#custom-spotify.liked {
-  color: #cba6f7;
-}
-#custom-spotify.added {
-  color: #f9e2af;
-}
-
-#custom-spotify.removed {
-  color: #f38ba8;
-}
-
-#custom-spotify.paused {
-  color: #9399b2;
-}
-*/
 
 window#waybar.empty #window {
   background-color: transparent;
@@ -111,6 +76,16 @@ window#waybar.empty #window {
 #battery.critical{
   color: #FF0000;
 }
+
+#battery.critical:not(.charging) {
+  background-color: #1d2021;
+  color: #FF5D62;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+} 
 
 /*
 #custom-logo {

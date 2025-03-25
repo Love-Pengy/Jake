@@ -19,16 +19,6 @@
     "battery", 
     "tray",
   ],
-  /*
-  "custom/spotify": {
-    "format": "  {}",
-    "return-type": "json",
-    "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "spotifatius toggle-liked",
-    "on-click-middle": "playerctl -p spotify next",
-    "exec": "spotifatius monitor",
-  },
-  */
   "sway/workspaces": {
     "on-click": "activate",
     "format": "{name}",
@@ -100,11 +90,4 @@
 		], 
         "format-charging": "󰂄 {capacity}%" 
 	},
-  /*
-  "custom/power": {
-    "tooltip": false,
-    "on-click": "wlogout -p layer-shell &",
-    "format": "⏻ ",
-  },
-*/
 }
