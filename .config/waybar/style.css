@@ -7,6 +7,13 @@
   font-weight: 600;
 }
 
+@keyframes blinkAlert
+{
+  to
+  {
+    color           : #FF0000;
+  }
+}
 
 window#waybar {
   background-color: @background;  
@@ -78,13 +85,11 @@ window#waybar.empty #window {
 }
 
 #battery.critical:not(.charging) {
-  background-color: #1d2021;
-  color: #FF5D62;
-  animation-name: blink;
-  animation-duration: 0.5s;
+  color: #FFFFFF;
+  animation-name: blinkAlert;
+  animation-duration: .9s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-direction: alternate;
 } 
 
 /*
