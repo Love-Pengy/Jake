@@ -5,7 +5,6 @@
 
 #Include 
 source "progs.sh"
-source "servers.sh"
 
 UHOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 echo $UHOME
@@ -100,9 +99,3 @@ usermod -aG video ${USER}
 
 # Make random_bg script executable
 chmod +x ~/.config/sway/random_bg
-
-# install neovim servers
-for server in ${servers[@]}; do 
-  nvim --headless  +'MasonInstall $package' +qa
-done 
-
