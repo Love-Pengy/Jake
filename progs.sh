@@ -53,8 +53,8 @@ programs=(
   # Pwogwamming #
   ##############
   
+  "rustup"
   "python3"
-  "cargo" 
   "valgrind" 
   "gdb" 
   "ripgrep" 

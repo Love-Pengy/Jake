@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# fail on error
+set -e
+
 #debug 
-# set -x 
+#set -x 
 
 #Include 
 source "progs.sh"
@@ -9,6 +12,8 @@ source "progs.sh"
 UHOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 echo $UHOME
 install="apt-get install -y -qq"
+nonRootBash="sudo -u $SUDO_USER bash -c"
+nonRoot="sudo -u $SUDO_USER"
 
 # ####################### #
 # Important Starting Deps # 
@@ -53,46 +58,39 @@ add-apt-repository ppa:obsproject/obs-studio
 apt update
 $install obs-studio
 
-
-## Install Rust |  requires user input
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Install cargo 
-$install cargo 
+$nonRoot rustup update
+$nonRoot rustup add cargo 
 
 # Install Wallust 
-cargo install wallust
-
-# nerdfonts
-curl https://api.github.com/repos/ryanoasis/nerd-fonts/tags | grep "tarball_url" | grep -Eo 'https://[^\"]*' | sed  -n '1p' | xargs wget -O - | tar -xz
-mkdir -p $UHOME/.local/share/fonts
-find ./ryanoasis-nerd-fonts-* -name '*.ttf' -exec cp {} $UHOME/.local/share/fonts \;
-rm -rf ./ryanoasis-nerd-fonts-*
-
-# PxPlus font
-git clone https://github.com/Love-Pengy/PxPlus_IBM_VGA8_Nerd.git
-mv ./PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGA8NerdFont-Regular.ttf $UHOME/.local/share/fonts 
-rm -rf PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGANerd
+$nonRoot cargo install wallust
 
 # obsidian
 flatpak install md.obsidian.Obsidian/x86_64/stable
 
-# vesktop
-curl -s https://api.github.com/repos/Vencord/Vesktop/releases/latest | grep "browser_download_url.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | wget -qi -
-$install ./vesktop_*_amd64.deb
-rm vesktop_*_amd64.deb
+# nerdfonts
+$nonRootBash "\
+curl https://api.github.com/repos/ryanoasis/nerd-fonts/tags | grep "tarball_url" | grep -Eo 'https://[^\"]*' | sed  -n '1p' | xargs wget -O - | tar -xz && \
+mkdir -p $UHOME/.local/share/fonts && \
+find ./ryanoasis-nerd-fonts-* -name '*.ttf' -exec mv {} '$UHOME/.local/share/fonts' \;" 
+rm -rf ./ryanoasis-nerd-fonts-*
+
+
+# PxPlus font
+$nonRootBash "git clone https://github.com/Love-Pengy/PxPlus_IBM_VGA8_Nerd.git"
+$nonRoot mv ./PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGA8NerdFont-Regular.ttf $UHOME/.local/share/fonts 
+rm -rf PxPlus_IBM_VGA8_Nerd
 
 # qmk
-python3 -m pip install --user qmk 
-qmk setup -H ~/Projects/qmk_firmware
+$nonRoot python3 -m pip install --user qmk --b 
+$nonRoot qmk setup -H ~/Projects/qmk_firmware
 
-exit 1
 # ############# #
 # Configuration # 
 # ############# #
 
-# Move dotfiles to their respective places
-stow .
+# Move dotfiles to their respective places, adopts existing files then overrides them to what they should be 
+$nonRoot stow . --adopt
+$nonRoot git restore .
 
 # Allow brightnessctl to work without sudo 
 usermod -aG video ${USER} 
