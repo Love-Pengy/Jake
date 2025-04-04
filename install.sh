@@ -63,6 +63,9 @@ $nonRoot rustup install stable
 # Install Wallust 
 $nonRoot cargo install wallust
 
+# Add Cargo binary location to path 
+$nonRoot export PATH="$PATH:/home/bee/.cargo/bin"
+
 # obsidian
 flatpak install md.obsidian.Obsidian/x86_64/stable
 
