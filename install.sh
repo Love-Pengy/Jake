@@ -4,13 +4,12 @@
 set -e
 
 #debug 
-#set -x 
+set -x 
 
 #Include 
 source "progs.sh"
 
-UHOME=$(getent passwd $SUDO_USER | cut -d: -f6)
-echo $UHOME
+#UHOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 install="apt-get install -y -qq"
 nonRootBash="sudo -u $SUDO_USER bash -c"
 nonRoot="sudo -u $SUDO_USER"
@@ -18,30 +17,29 @@ nonRoot="sudo -u $SUDO_USER"
 # ####################### #
 # Important Starting Deps # 
 # ####################### #
+echo $HOME
 
 # Sudo check
-if [[ $EUID > 0 ]]
-  then echo "Please run as root"
-  exit
-fi
+#if [[ $EUID > 0 ]]
+#  then echo "Please run as root"
+#  exit
+#fi
 
 # ##### #
 # Setup # 
 # ##### #
 
-apt-get update -qq && apt-get upgrade -y -qq 
+sudo apt-get update -qq && sudo apt-get upgrade -y -qq 
 
 # My Preferred Folders
-mkdir -p $UHOME/Applications $UHOME/Projects $UHOME/Documents $UHOME/Videos \
-         $UHOME/Downloads 
-
+mkdir -p ~/Applications ~/Projects ~/Documents ~/Videos ~/Downloads 
 
 # ################ #
 # Package Download #
 # ################ #
 
 for package in ${programs[@]}; do 
-  $install $package
+  sudo $install $package
   if [ $? -ne 0 ]; then 
     echo "Package $package Failed"
     exit 1
@@ -50,36 +48,39 @@ done
 
 # Install Local Send
 curl -s https://api.github.com/repos/localsend/localsend/releases/latest | grep "browser_download_url.*linux-x86-64.deb" | cut -d : -f 2,3 | tr -d \" | wget -qi -
-$install ./LocalSend-*-linux-x86-64.deb
+sudo $install ./LocalSend-*-linux-x86-64.deb
 rm LocalSend-*-linux-x86-64.deb
 
 # Install OBS
-add-apt-repository ppa:obsproject/obs-studio
-apt update
-$install obs-studio
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt update -qq
+sudo $install obs-studio
 
-$nonRoot rustup install stable
+# install rust and cargo
+rustup install stable
 
 # Install Wallust 
-$nonRoot cargo install wallust
+cargo install wallust
 
 # Add Cargo binary location to path 
-$nonRoot export PATH="$PATH:/home/bee/.cargo/bin"
+export PATH="$PATH:/home/bee/.cargo/bin"
 
 # obsidian
 flatpak install md.obsidian.Obsidian/x86_64/stable
 
+mkdir -p ~/.local/share/fonts
+
 # nerdfonts
-$nonRootBash "\
 curl https://api.github.com/repos/ryanoasis/nerd-fonts/tags | grep "tarball_url" | grep -Eo 'https://[^\"]*' | sed  -n '1p' | xargs wget -O - | tar -xz && \
-mkdir -p $UHOME/.local/share/fonts && \
-find ./ryanoasis-nerd-fonts-* -name '*.ttf' -exec mv {} '$UHOME/.local/share/fonts' \;" 
+mkdir -p ~/.local/share/fonts && \
+find ./ryanoasis-nerd-fonts-* -name '*.ttf' -exec mv {} ~/.local/share/fonts \; 
+
 rm -rf ./ryanoasis-nerd-fonts-*
 
 
 # PxPlus font
-$nonRootBash "git clone https://github.com/Love-Pengy/PxPlus_IBM_VGA8_Nerd.git"
-$nonRoot mv ./PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGA8NerdFont-Regular.ttf $UHOME/.local/share/fonts 
+git clone https://github.com/Love-Pengy/PxPlus_IBM_VGA8_Nerd.git
+mv ./PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGA8NerdFont-Regular.ttf ~/.local/share/fonts 
 rm -rf PxPlus_IBM_VGA8_Nerd
 
 # ############# #
@@ -87,11 +88,11 @@ rm -rf PxPlus_IBM_VGA8_Nerd
 # ############# #
 
 # Move dotfiles to their respective places, adopts existing files then overrides them to what they should be 
-$nonRoot stow . --adopt
-$nonRoot git restore .
+stow . --adopt
+git restore .
 
 # Allow brightnessctl to work without sudo 
 usermod -aG video ${USER} 
 
 # Make random_bg script executable
-$nonRootBash "chmod +x ~/.config/sway/random_bg"
+chmod +x ~/.config/sway/random_bg

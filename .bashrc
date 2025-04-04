@@ -122,7 +122,6 @@ bind "set menu-complete-display-prefix on"
 
 # for java white screen thingy 
 export _JAVA_AWT_WM_NONREPARENTING=1
-. "$HOME/.cargo/env"
 
 # add path for neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"

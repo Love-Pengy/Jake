@@ -8,7 +8,6 @@
 
 **NOTES:** 
 - clone with ```git clone --recursive```
-- run with ```sudo -H ./install.sh``` 
 
 ![Main Look](assets/terminal.png)
 ![D Menu](assets/tofi.png)
