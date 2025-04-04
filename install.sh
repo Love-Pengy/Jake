@@ -58,8 +58,7 @@ add-apt-repository ppa:obsproject/obs-studio
 apt update
 $install obs-studio
 
-$nonRoot rustup update
-$nonRoot rustup add cargo 
+$nonRoot rustup install stable
 
 # Install Wallust 
 $nonRoot cargo install wallust
