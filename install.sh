@@ -80,10 +80,6 @@ $nonRootBash "git clone https://github.com/Love-Pengy/PxPlus_IBM_VGA8_Nerd.git"
 $nonRoot mv ./PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGA8NerdFont-Regular.ttf $UHOME/.local/share/fonts 
 rm -rf PxPlus_IBM_VGA8_Nerd
 
-# qmk
-$nonRoot python3 -m pip install --user qmk --b 
-$nonRoot qmk setup -H ~/Projects/qmk_firmware
-
 # ############# #
 # Configuration # 
 # ############# #
@@ -96,4 +92,4 @@ $nonRoot git restore .
 usermod -aG video ${USER} 
 
 # Make random_bg script executable
-chmod +x ~/.config/sway/random_bg
+$nonRootBash "chmod +x ~/.config/sway/random_bg"

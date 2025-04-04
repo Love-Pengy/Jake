@@ -53,6 +53,7 @@ programs=(
   # Pwogwamming #
   ##############
   
+  "python3-pip"
   "rustup"
   "python3"
   "valgrind" 
