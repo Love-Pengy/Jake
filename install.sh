@@ -92,7 +92,7 @@ stow . --adopt
 git restore .
 
 # Allow brightnessctl to work without sudo 
-usermod -aG video ${USER} 
+sudo usermod -aG video ${USER} 
 
 # Make random_bg script executable
 chmod +x ~/.config/sway/random_bg
