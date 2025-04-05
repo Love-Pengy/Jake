@@ -63,7 +63,9 @@ rustup install stable
 cargo install wallust
 
 # Add Cargo binary location to path 
-export PATH="$PATH:/home/bee/.cargo/bin"
+export PATH="$PATH:~/.cargo/bin"
+
+source ~/.bashrc
 
 # obsidian
 flatpak install md.obsidian.Obsidian/x86_64/stable
@@ -95,4 +97,4 @@ git restore .
 sudo usermod -aG video ${USER} 
 
 # Make random_bg script executable
-chmod +x ~/.config/sway/random_bg
+sudo chmod +x ~/.config/sway/random_bg
