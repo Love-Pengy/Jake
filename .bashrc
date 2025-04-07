@@ -108,6 +108,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# for java white screen thingy 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Firefox wayland:
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
+# add path for neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# change sudo -e editor to nvim
+export EDITOR="/opt/nvim-linux64/bin/nvim"
+
 # cycle through if hitting tab
 bind 'TAB:menu-complete'
 
@@ -119,12 +140,3 @@ bind '"\e[Z":menu-complete-backward'
 
 # do partial completion on the first tab cycle after that 
 bind "set menu-complete-display-prefix on"
-
-# for java white screen thingy 
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# add path for neovim
-export PATH="$PATH:/opt/nvim-linux64/bin"
-
-# change sudo -e editor to nvim
-export EDITOR="/opt/nvim-linux64/bin/nvim"

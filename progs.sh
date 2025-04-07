@@ -7,8 +7,6 @@ programs=(
   ########
 
   "sway" 
-  # NOTE: should come from pulseaudio 
-  # "pactl" 
   "brightnessctl" 
   "grimshot" 
   "swayidle"  
@@ -60,7 +58,6 @@ programs=(
   "gdb" 
   "ripgrep" 
   "fd-find" 
-  "neovim"  
   "make" 
   "cmake" 
   "flatpak"  

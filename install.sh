@@ -9,15 +9,11 @@ set -x
 #Include 
 source "progs.sh"
 
-#UHOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 install="apt-get install -y -qq"
-nonRootBash="sudo -u $SUDO_USER bash -c"
-nonRoot="sudo -u $SUDO_USER"
 
 # ####################### #
 # Important Starting Deps # 
 # ####################### #
-echo $HOME
 
 # Sudo check
 #if [[ $EUID > 0 ]]
@@ -63,12 +59,15 @@ rustup install stable
 cargo install wallust
 
 # Add Cargo binary location to path 
-export PATH="$PATH:~/.cargo/bin"
+echo 'export PATH="$PATH:~/.cargo/bin"' >> ~/.bashrc
 
 source ~/.bashrc
 
 # obsidian
 flatpak install md.obsidian.Obsidian/x86_64/stable
+
+# vesktop
+flatpak install dev.vencord.Vesktop 
 
 mkdir -p ~/.local/share/fonts
 
@@ -84,6 +83,17 @@ rm -rf ./ryanoasis-nerd-fonts-*
 git clone https://github.com/Love-Pengy/PxPlus_IBM_VGA8_Nerd.git
 mv ./PxPlus_IBM_VGA8_Nerd/PxPlusIBMVGA8NerdFont-Regular.ttf ~/.local/share/fonts 
 rm -rf PxPlus_IBM_VGA8_Nerd
+
+
+# neovim 
+runDir=$(PWD)
+cd ~/Applications
+git clone https://github.com/neovim/neovim
+cd neovim
+git checkout stable
+make CMAKE_BUILD_TYPE=RelWithDebInfo 
+cd $runDir
+
 
 # ############# #
 # Configuration # 

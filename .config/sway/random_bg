@@ -2,6 +2,7 @@
 # https://github.com/pengux/dotfiles/blob/pn/wayland/.config/sway/random_bg
 import glob
 import os
+import sys
 import random
 import sys
 from os.path import expanduser
@@ -13,8 +14,9 @@ if len(args) == 0:
 walls = list()
 for source in args:
     walls += glob.glob(f"{homeDir}/Pictures/Wallpapers/" + source + "/*.png")
+
 chosen = random.choice(walls)
 # -s skips setting terminal colorscheme
 # -q doesn't print anything
-os.system(f"wallust run -q {chosen}")
+os.system(f"{homeDir}/.cargo/bin/wallust run -q {chosen}")
 print(chosen)
