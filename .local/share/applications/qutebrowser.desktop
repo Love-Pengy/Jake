@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=qutebrowser
+Exec=/usr/local/bin/qutebrowser
+Terminal=false
+Type=Application

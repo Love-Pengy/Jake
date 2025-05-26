@@ -129,6 +129,9 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # change sudo -e editor to nvim
 export EDITOR="/opt/nvim-linux64/bin/nvim"
 
+# Export Compile Commands For Cmake projs
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
 # cycle through if hitting tab
 bind 'TAB:menu-complete'
 

@@ -108,3 +108,13 @@ sudo usermod -aG video ${USER}
 
 # Make random_bg script executable
 sudo chmod +x ~/.config/sway/random_bg
+
+# Install qutebrowser
+runDir=$(PWD)
+apt install --no-install-recommends git ca-certificates python3 python3-venv libgl1 libxkbcommon-x11-0 libegl1 libfontconfig1 libglib2.0-0 libdbus-1-3 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libnss3 libxcomposite1 libxdamage1 libxrender1 libxrandr2 libxtst6 libxi6 libasound2t64 
+cd ~/Applications
+git clone https://github.com/qutebrowser/qutebrowser.git
+cd qutebrowser
+python3 scripts/mkvenv.py
+cd $runDir
+sudo cp externalScripts/qutebrowser /usr/local/bin/qutebrowser 
