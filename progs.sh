@@ -36,6 +36,7 @@ programs=(
   "manpages-posix-dev" 
   "ffmpeg" 
   "curl"
+  "kew"
 
   ##########
   # Extras #

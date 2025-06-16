@@ -58,11 +58,6 @@ rustup install stable
 # Install Wallust 
 cargo install wallust
 
-# install termusic 
-sudo $install libmpv2-dev  
-cargo install termusic-server --features mpv
-cargo install termusic 
-
 # Add Cargo binary location to path 
 echo 'export PATH="$PATH:~/.cargo/bin"' >> ~/.bashrc
 

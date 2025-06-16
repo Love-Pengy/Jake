@@ -77,13 +77,13 @@
     exec swayidle -w \
           timeout 600 '~/.config/sway/sway-lock.sh' \
           timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep '~/.config/sway/sway-lock.sh > log'
+          before-sleep '~/.config/sway/sway-lock.sh'
 
     #lock screen with a bg image
     bindsym $mod+Shift+x exec wlogout -p layer-shell
 
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+t exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -216,7 +216,8 @@
     assign [app_id="vesktop"] 4
 
     #  smarter splitting cause im lazy :3
-    for_window [app_id="kitty"] split toggle ; opacity .97 
+    for_window [app_id="kitty"] split toggle
+    #opacity .97 
     
 
 
