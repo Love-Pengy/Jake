@@ -2,7 +2,7 @@
 {
   "layer": "bottom",
   "position": "top",
-  "height": 35,
+  "height": 18,
   "spacing": 0,
   "exclusive": true,
   "gtk-layer-shell": true,

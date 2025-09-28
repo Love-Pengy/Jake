@@ -1,5 +1,5 @@
 [global]
-font = Iosevka Term 11
+font = PxPlusIBMVGA8 Nerd Font
 
 # Allow a small subset of html markup:
 #   <b>bold</b>

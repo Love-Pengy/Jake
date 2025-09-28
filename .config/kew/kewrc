@@ -5,11 +5,11 @@
 [miscellaneous]
 
 path=/home/bee/Music
-version=3.3.4
+version=3.5.0
 allowNotifications=1
 hideLogo=0
 hideHelp=0
-lastVolume=100
+lastVolume=5
 
 # Cache: Set to 1 to use cache of the music library directory tree for faster startup times.
 cacheLibrary=1
@@ -154,7 +154,7 @@ toggleShuffle=s
 seekBackward=a
 seekForward=d
 savePlaylist=x
-addToMainPlaylist=.
+addToFavoritesPlaylist=.
 updateLibrary=u
 moveSongUp=t
 moveSongDown=g

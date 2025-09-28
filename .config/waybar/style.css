@@ -1,48 +1,49 @@
 /*https://github.com/brunoanesio/waybar-config/tree/main?tab=readme-ov-file*/
-@import 'waybarColors.css'; 
 * {
-  min-height: 0;
-  font-family:  "HackNerdFontPropo";
-  font-size: 16px;
-  font-weight: 600;
+    min-height: 0;
+    font-family:  "HackNerdFontPropo";
+    font-size: 12px;
+    font-weight: 600;
 }
 
 @keyframes blinkAlert
 {
-  to
-  {
-    color           : #FF0000;
-  }
+    to
+    {
+        color           : #FF0000;
+    }
 }
 
 window#waybar {
-  background-color: @background;  
+    background-color: #11111b;
 }
 
 /*
 window#waybar.hidden {
-  opacity: 0.5;
+opacity: 0.5;
 }
 */
 
 #workspaces {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #workspaces button {
-  color: @foreground;
-	padding-top: 1.5px;
-	padding-bottom: 1.5px;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    padding-top: 1.5px;
+    padding-bottom: 1.5px;
 }
 
 #workspaces button.focused{
-  color: @color14; /*#1e1e2e;*/
-  background-color: @background; 
-  transition: all .4s ease-in-out;
+    color: #89b4fa;
+    background-color: #1e1e2e;
+    transition: all .4s ease-in-out;
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+    color: #1e1e2e;
+    background-color: #f38ba8;
 }
 
 #clock,
@@ -55,56 +56,56 @@ window#waybar.hidden {
 #memory, 
 #battery, 
 #window {
-  min-height: 0;
-  padding: 2px 10px;
-  border-radius: 4px;
-  margin: 4px 4px;
-  color: @color15;
-  background-color: @infoBG;
+    min-height: 0;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin: 4px 4px;
+    color: #89b4fa;
+    background-color: #1e1e2e;
 }
 
 #custom-sep {
-  padding: 0px;
-  color: #585b70;
+    padding: 0px;
+    color: #585b70;
 }
 
 window#waybar.empty #window {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #network.disconnected{
-  color: #FF0000;
+    color: #FF0000;
 }
 
 #battery.warning{ 
-	color: #FFA500;
+    color: #FFA500;
 }
 
 #battery.critical{
-  color: #FF0000;
+    color: #FF0000;
 }
 
 #battery.critical:not(.charging) {
-  color: #FFFFFF;
-  animation-name: blinkAlert;
-  animation-duration: .9s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+    color: #FFFFFF;
+    animation-name: blinkAlert;
+    animation-duration: .9s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 } 
 
 /*
 #custom-logo {
-  color: #89b4fa;
-  background-color: @color15;
+color: #89b4fa;
+background-color: @color15;
 }
 */
 
 tooltip {
-  background-color: @background;
-  border-radius: 8px;
-	border-width: 3px;
-	border-style: solid;
-	border-color: @color9;
-	padding-top: 3px;
-	padding-bottom: 3px;
+    background-color: #181825;
+    border-radius: 8px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #89b4fa;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }

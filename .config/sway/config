@@ -72,7 +72,7 @@
 ### Behavior
 
     # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-    output * bg `$HOME/.config/sway/random_bg` fill  
+    output * bg $HOME/Pictures/wallpaper.png fill
 
     exec swayidle -w \
           timeout 600 '~/.config/sway/sway-lock.sh' \
@@ -213,7 +213,7 @@
 
     assign [app_id="com.obsproject.Studio"] 6 
     assign [class="obsidian"] 3
-    assign [app_id="vesktop"] 4
+    assign [class="discord"] 4
 
     #  smarter splitting cause im lazy :3
     for_window [app_id="kitty"] split toggle
@@ -227,7 +227,7 @@
     include ~/.config/sway/swayColors.css
     #               border    bg        text     indicator
     #         (normal border)                    (indicator for where next window will open) 
-    client.focused "$active" "$active" "$active" "$active"
+    client.focused "#00FFFF" "#00FFFF" "#00FFFF" "#00FFFF"
     client.focused_inactive "#000000" "#000000" "#000000" "#000000"
     client.unfocused "#000000" "#000000" "#000000" "#000000"
     

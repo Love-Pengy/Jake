@@ -52,15 +52,6 @@ sudo add-apt-repository ppa:obsproject/obs-studio
 sudo apt update -qq
 sudo $install obs-studio
 
-# install rust and cargo
-rustup install stable
-
-# Install Wallust 
-cargo install wallust
-
-# Add Cargo binary location to path 
-echo 'export PATH="$PATH:~/.cargo/bin"' >> ~/.bashrc
-
 source ~/.bashrc
 
 # obsidian
