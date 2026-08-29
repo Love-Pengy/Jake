@@ -72,7 +72,7 @@
 ### Behavior
 
     # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-    output * bg $HOME/Pictures/wallpaper.png fill
+    output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     exec swayidle -w \
           timeout 600 '~/.config/sway/sway-lock.sh' \
