@@ -54,6 +54,7 @@ opacity: 0.5;
 #cpu,
 #tray,
 #memory, 
+#disk,
 #battery, 
 #window {
     min-height: 0;
