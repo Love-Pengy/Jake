@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=50000
+HISTFILESIZE=50000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -110,7 +110,7 @@ fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # for java white screen thingy 
@@ -127,7 +127,8 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # change sudo -e editor to nvim
-export EDITOR="/opt/nvim-linux64/bin/nvim"
+export EDITOR="nvim"
+
 
 # Export Compile Commands For Cmake projs
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
