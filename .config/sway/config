@@ -76,7 +76,7 @@
 
     exec swayidle -w \
           timeout 600 '~/.config/sway/sway-lock.sh' \
-          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep '~/.config/sway/sway-lock.sh'
 
     #lock screen with a bg image
@@ -96,18 +96,16 @@
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     
-    bindsym $mod+Shift+p exec waybar-module-pomodoro toggle 
-
 ### Input configuration
 
-    input type:touchpad {
-        #enable tap
-        tap enabled
-        #enable tap and drag
-        drag enabled
-        #enable middle click emulation
-        middle_emulation enabled
-    }
+    # input type:touchpad {
+    #     #enable tap
+    #     tap enabled
+    #     #enable tap and drag
+    #     drag enabled
+    #     #enable middle click emulation
+    #     middle_emulation enabled
+    # }
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

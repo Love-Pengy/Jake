@@ -1,3 +1,3 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = git@github.com:Love-Pengy/BeeConfig.git
+	url = https://github.com/Love-Pengy/BeeConfig.git
