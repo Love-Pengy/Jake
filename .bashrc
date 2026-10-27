@@ -126,6 +126,10 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
+# Go stoofs
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$(go env GOPATH)/bin"
+
 # change sudo -e editor to nvim
 export EDITOR="nvim"
 
