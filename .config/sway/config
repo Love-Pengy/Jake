@@ -23,7 +23,7 @@
     set $term kitty --single-instance
 
     # Your preferred application launcher
-    set $menu wmenu-run -b -l 5 #-n aa2b28 -S aa2b28
+    set $menu tofi-drun
 
     #use pactl to adjust volume in pulse audio
     set $refresh_i3status kill all -SIGUSR1 i3status
